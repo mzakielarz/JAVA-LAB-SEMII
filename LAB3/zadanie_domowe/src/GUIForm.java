@@ -61,6 +61,7 @@ public class GUIForm extends JFrame {
         list1.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                try{
                 int index = list1.getSelectedIndex();
                 textFieldName.setText(database.get(index).getName());
                 textFieldMail.setText(database.get(index).getEmail());
@@ -68,6 +69,12 @@ public class GUIForm extends JFrame {
                 textFieldAddress.setText(database.get(index).getAddress());
                 textFieldDateOfBirth.setText(database.get(index).getDate_of_Birth());
                 lblAge_number.setText(database.get(index).getAge());
+                }
+                 catch (IndexOutOfBoundsException indexException){
+                    list1.invalidate();
+                    list1.validate();
+                    list1.repaint();
+                } 
             }
         });
 
