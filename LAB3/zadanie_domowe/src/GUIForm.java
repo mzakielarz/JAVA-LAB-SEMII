@@ -82,6 +82,11 @@ public class GUIForm extends JFrame {
                 p.setDate_of_Birth((textFieldDateOfBirth.getText()));
                 database.add(p);
 
+                textFieldName.setText("");
+                textFieldMail.setText("");
+                textFieldPhone.setText("");
+                textFieldAddress.setText("");
+                textFieldDateOfBirth.setText("");
                 list1.setModel(demoList);
                 demoList.addElement(p.getName());
                 list1.setModel(demoList);
