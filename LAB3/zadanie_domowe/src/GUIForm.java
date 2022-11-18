@@ -24,6 +24,7 @@ public class GUIForm extends JFrame {
     private JLabel lblAge; /////
     private JLabel lblAge_number;
    public static ArrayList<Person> database = new ArrayList<>();
+    public static DefaultListModel demoList = new DefaultListModel();
 
 
 
@@ -38,6 +39,13 @@ public class GUIForm extends JFrame {
         database.add(p2);
         database.add(p3);
         database.add(p4);
+
+        demoList.addElement(p1.getName());
+        demoList.addElement(p2.getName());
+        demoList.addElement(p3.getName());
+        demoList.addElement(p4.getName());
+
+
 
 
     }
@@ -73,10 +81,21 @@ public class GUIForm extends JFrame {
                 p.setAddress((textFieldAddress.getText()));
                 p.setDate_of_Birth((textFieldDateOfBirth.getText()));
                 database.add(p);
+
+                list1.setModel(demoList);
+                demoList.addElement(p.getName());
+                list1.setModel(demoList);
+                btnSaveExisting.setEnabled(true);
+
                 // sprawzam czy działa przypisanie do obiektu
-                System.out.println(p.name+ " "+p.email);
+                System.out.println(p.name+ " "+p.email+p.phone_number+ " "+p.address+p.getDate_of_Birth()+ " "+p.age);
 
-
+            }
+        });
+        btnSaveExisting.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                list1.setModel(demoList);
             }
         });
     }
